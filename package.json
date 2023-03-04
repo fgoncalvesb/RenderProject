@@ -1,16 +1,19 @@
 {
-  "name": "renderdemo",
+  "name": "fsd_project1",
   "version": "1.0.0",
-  "description": "render_demo",
+  "description": "fsd_project1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
   "keywords": [
-    "render",
-    "node.js"
+    "guestbook"
   ],
   "author": "Facundo Goncalves Borrega",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies":{
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2"
+  }
 }
