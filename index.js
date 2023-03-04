@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 // For parsing application
 app.use(bodyParser.urlencoded({ extended: true}))
 
+app.use(express.static(__dirname + '/Project1/public'))
+
 // Homepage
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/Project1/public/index.html');
