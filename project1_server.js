@@ -16,7 +16,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/guestbook', function (req, res) {
-    var data = require('./jsonguestbookdata.json');
+    var data = require('./Project1/public/jsonguestbookdata.json');
     //res.json(data);
 
     var results = '<table border="1"> ';
