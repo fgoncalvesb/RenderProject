@@ -4,15 +4,17 @@
 		<title>Project 1 - Fullstack Dev</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="newmessage.css">
+        <script src="ajaxmessage.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     </head>
     <body id="mainBody">
 
         <!--box div is for CSS of the form-->
         <div class="box">
-        <h1>You may add a new comment</h1>
+        <h1>You may add a new comment (AJAX)</h1>
         
          <!--This is a normal form, similar to the ones we did for the workshops. I added some "spans" for the error messages-->
-            <form name="myForm" action="/newmessage" method="post">
+            <form name="myForm" onsubmit="return executeAjaxCall()">
 
                 <label>Username:<br>
                     <input type="text" name="username" required>
@@ -31,6 +33,7 @@
                 <input type="submit" value="Add message">
 
             </form>
+
         </div>
 
     </body>
