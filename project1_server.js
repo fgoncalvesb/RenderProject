@@ -88,7 +88,62 @@ app.post('/newmessage', function (req, res) {
         console.log ('it\'s saved!');
     });
     
-    res.send("Saved the data to a file. Browse to the /guestbook to see the content of the file")
+    res.send("Saved the data to a file. Browse to /guestbook to see the content of the file")
+    //res.send(JSON.stringify(req));
+});
+
+
+//Route for form sending the POST data
+app.post('/newmessageajax', function (req, res) {
+
+    //console.log(req);
+
+    var data = require('./Project1/public/jsonguestbookdata.json');
+
+    data.push({
+    "username": req.body.username,
+    "country": req.body.country,
+    "date": new Date(),
+    "message": req.body.message,
+
+    })
+
+    // Convert the JSON object to a string format
+    var jsonStr = JSON.stringify(data);
+
+    // Wrote data to a file
+    fs.writeFile('./Project1/public/jsonguestbookdata.json', jsonStr, (err) => {
+        if (err) throw err;
+        console.log ('it\'s saved!');
+    });
+
+    var results = '<table class="table"><thead>';
+
+    results +=
+        '<tr>' +
+        '<th scope="col">' + 'Username' + '</th>' +
+        '<th scope="col">' + 'Country' + '</th>' +
+        '<th scope="col">' + 'Date' + '</th>' +
+        '<th scope="col">' + 'Message' + '</th>' +
+        '</tr></thead>';
+
+    results += '<tbody>';
+
+    for (var i = 0 ; i < data.length ; i++ ){
+        results +=
+        '<tr>' +
+        '<td>' + data[i].username + '</td>' +
+        '<td>' + data[i].country + '</td>' +
+        '<td>' + data[i].date + '</td>' +
+        '<td>' + data[i].message + '</td>' +
+        '</tr>';
+    }
+
+    results += '</tbody></table>';
+
+    res.send(results);
+    
+   // res.send("Saved the data to a file. Browse to the /guestbook to see the content of the file")
     //res.send(JSON.stringify(req));
 });
 

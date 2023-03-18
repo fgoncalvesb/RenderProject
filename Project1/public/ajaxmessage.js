@@ -11,15 +11,25 @@ function executeAjaxCall(){
 					data.country = formCountry;
                     data.message = formMessage;
 
-    console.log(JSON.stringify(data));
+    console.log("Trying to send this json: "+JSON.stringify(data));
 
 					$.ajax({
 						type: 'POST',
                         data: data,
-                        url: '/newmessage',						
+                        url: '/newmessageajax',						
                         success: function(data) {
                             console.log('success');
-                            console.log(JSON.stringify(data));
+
+                            //I put proper style to the DIV where I'm going to put the response, below the form.
+                            document.getElementById("newGuestbook").style.marginLeft = "450px";
+                            document.getElementById("newGuestbook").style.marginRight = "auto";
+                            document.getElementById("newGuestbook").style.marginTop = "800px";
+                            document.getElementById("newGuestbook").style.textAlign = "center"; 
+                            document.getElementById("newGuestbook").innerHTML = data;
+
+                        },
+                        error: function() {
+                            alert('Error occured while trying to do Ajax call');
                         }
                     });
 
